@@ -3,15 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Snake Head
+  - Wall
+  - Fruit
+  - Snake Body
+  - AI Snake Head
+  - AI Snake Body
+  - Game Music
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Post Processing
   - Water
   - UI
-  - 
+  - Tile
   - 
   - 
   - 
@@ -40,4 +47,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tiles
+    uniqueID: 4022904707
+    locked: 0
+  - name: Fruit
+    uniqueID: 1789864363
+    locked: 0
+  - name: Snake
+    uniqueID: 3921995737
     locked: 0
