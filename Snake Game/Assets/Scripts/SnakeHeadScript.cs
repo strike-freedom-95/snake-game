@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SnakeHeadScript : MonoBehaviour
@@ -9,39 +10,75 @@ public class SnakeHeadScript : MonoBehaviour
     [SerializeField] Sprite deadSnake;
     [SerializeField] AudioClip eatSFX;
     [SerializeField] AudioClip deadSFX;
-    [SerializeField] Canvas deathScreen;
     [SerializeField] ParticleSystem eatFX;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        if (collision.gameObject.tag == "Fruit")
+        CheckFruit();
+        CheckWalls();
+        CheckSnakeBodyPosition();
+        CheckSnakeHeadPosition();
+    }
+
+    private void CheckSnakeHeadPosition()
+    {
+        foreach (GameObject segment in GameObject.FindGameObjectsWithTag("AI Snake Head"))
         {
-            FruitSequence(collision);
+            if ((int)transform.position.x == (int)segment.transform.position.x &&
+                (int)transform.position.y == (int)segment.transform.position.y)
+            {
+                SnakeDeathSequence();
+            }
         }
     }
 
-    private void FruitSequence(Collider2D collision)
+    private void CheckSnakeBodyPosition()
+    {
+        foreach (GameObject segment in GameObject.FindGameObjectsWithTag("Snake Body"))
+        {
+            if ((int)transform.position.x == (int)segment.transform.position.x &&
+                (int)transform.position.y == (int)segment.transform.position.y)
+            {
+                SnakeDeathSequence();
+            }
+        }
+    }
+
+    private void CheckWalls()
+    {
+        foreach (GameObject wall in GameObject.FindGameObjectsWithTag("Wall"))
+        {
+            if ((int)transform.position.x == (int)wall.transform.position.x &&
+                (int)transform.position.y == (int)wall.transform.position.y)
+            {
+                SnakeDeathSequence();
+            }
+        }
+    }
+
+    private void CheckFruit()
+    {
+        if (GameObject.FindGameObjectWithTag("Fruit") != null)
+        {
+            GameObject fruit = GameObject.FindGameObjectWithTag("Fruit");
+            int fruitPosX = (int)fruit.transform.position.x;
+            int fruitPosY = (int)fruit.transform.position.y;
+
+            if ((int)transform.position.x == fruitPosX && (int)transform.position.y == fruitPosY)
+            {
+                FruitSequence(fruit);
+            }
+        }
+    }
+
+    private void FruitSequence(GameObject fruit)
     {
         FindObjectOfType<ScoreCounterScript>().IncreaseScore();
         Instantiate(eatFX, transform.position, Quaternion.identity);
-        Destroy(collision.gameObject);
+        Destroy(fruit);
         AudioSource.PlayClipAtPoint(eatSFX, Camera.main.transform.position);
         FindObjectOfType<FruitSpawner>().SpawnNewFruit();
         FindObjectOfType<SnakeMovement>().FruitEaten();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Snake Body")
-        {
-            SnakeDeathSequence();
-        }
-
-        if (collision.gameObject.tag == "Wall")
-        {
-            
-            SnakeDeathSequence();
-        }
     }
 
     private void SnakeDeathSequence()
@@ -50,13 +87,7 @@ public class SnakeHeadScript : MonoBehaviour
         GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         FindObjectOfType<SnakeMovement>().SetSnakeStatus(false);
+        FindObjectOfType<AISnakeMovement>().SetSnakeStatus(true);
         GetComponent<SpriteRenderer>().sprite = deadSnake;
-        StartCoroutine(ShowDeathScreenAfterDelay(1));
-    }
-
-    IEnumerator ShowDeathScreenAfterDelay(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        Instantiate(deathScreen, Vector2.zero, Quaternion.identity);
     }
 }

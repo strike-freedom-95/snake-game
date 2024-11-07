@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5411522872847298601}
   - component: {fileID: 3593071488750789497}
   - component: {fileID: 7833470549053915634}
+  - component: {fileID: 361332830127934665}
   m_Layer: 0
   m_Name: Eat Effect
   m_TagString: Untagged
@@ -4812,3 +4813,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &361332830127934665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655351339407207983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bce70a2e4a81f45b23fe32d7681183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 2

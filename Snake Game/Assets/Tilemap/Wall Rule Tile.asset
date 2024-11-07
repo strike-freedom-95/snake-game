@@ -12,27 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Wall Rule Tile
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 348087901, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
+  m_DefaultSprite: {fileID: 21300000, guid: cf12bd7fbfcdb95488a1d0f3b1e85e8c, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: -1374376066, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: -1685813153, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: -1683265978, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: 113488057, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: 1075927699, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: 234048644, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: -372442564, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
-    - {fileID: 348087901, guid: 4c8e88c6b19ace44e88d82c49ef78b6d, type: 3}
+    - {fileID: 1745716564, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 1881254292, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: -1434903416, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 149510733, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 1167015421, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 1584618254, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: -1233425489, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: -1785964486, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 1784377835, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: -1168353786, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: -1860163647, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 1338887041, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: -636996073, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 1198637143, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 514861322, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
+    - {fileID: 266030880, guid: 683efb708e6e4bf4a80b9d6272ad52d9, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.5
+    m_PerlinScale: 0.61
     m_Output: 1
     m_ColliderType: 1
-    m_RandomTransform: 0
+    m_RandomTransform: 2
     m_Neighbors: 
     m_NeighborPositions:
     - {x: -1, y: 1, z: 0}

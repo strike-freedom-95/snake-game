@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5039411317960626346}
   - component: {fileID: 5039411317960626347}
-  - component: {fileID: 8841396927419400184}
-  - component: {fileID: 3881275916268327551}
   - component: {fileID: 4383696239107008407}
   - component: {fileID: 6673384783682521004}
   m_Layer: 0
@@ -88,43 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8841396927419400184
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5039411317960626345}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 7
---- !u!58 &3881275916268327551
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5039411317960626345}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &4383696239107008407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c77da632e90b2428c0017daa082575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticle: {fileID: 6700869778350982491, guid: e1e045636a89ce9408c612caef458028, type: 3}
+  deadSnake: {fileID: 21300000, guid: e12abbb4cc8f38942a40bf41a2129aa7, type: 3}
+  eatSFX: {fileID: 8300000, guid: 72a82bbda961e9040b945bae2b2b2903, type: 3}
+  deadSFX: {fileID: 8300000, guid: f66ad857cc37eb7408a8565adfa0186b, type: 3}
+  deathScreen: {fileID: 7270870079354923293, guid: e95413586e91c82469d049acda4455bd, type: 3}
+  eatFX: {fileID: 3593071488750789497, guid: ad387a3397ae86a489934ddaf838ad7f, type: 3}

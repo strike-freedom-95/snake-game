@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnakeMovement : MonoBehaviour
 {
     bool isSnakeAlive = true;
+    bool isMatchOver = false;
     bool isVertical = true;
 
     int xDirection, yDirection;
@@ -41,47 +42,67 @@ public class SnakeMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isVertical)
         {
             isVertical = true;
-            xDirection = 0;
-            yDirection = 1;
-            rotation = Quaternion.Euler(0, 0, 0);
+            GoForeward();
         }
 
         else if (Input.GetKeyUp(KeyCode.DownArrow) && !isVertical)
         {
             isVertical = true;
-            xDirection = 0;
-            yDirection = -1;
-            rotation = Quaternion.Euler(0, 0, 180);
+            GoBack();
         }
 
         else if (Input.GetKeyUp(KeyCode.LeftArrow) && isVertical)
         {
             isVertical = false;
-            xDirection = -1;
-            yDirection = 0;
-            rotation = Quaternion.Euler(0, 0, 90);
+            TurnLeft();
         }
 
         else if (Input.GetKeyUp(KeyCode.RightArrow) && isVertical)
         {
             isVertical = false;
-            xDirection = 1;
-            yDirection = 0;
-            rotation = Quaternion.Euler(0, 0, -90);
+            TurnRight();
         }
+    }
+
+    private void TurnRight()
+    {
+        xDirection = 1;
+        yDirection = 0;
+        rotation = Quaternion.Euler(0, 0, -90);
+    }
+
+    private void TurnLeft()
+    {
+        xDirection = -1;
+        yDirection = 0;
+        rotation = Quaternion.Euler(0, 0, 90);
+    }
+
+    private void GoBack()
+    {
+        xDirection = 0;
+        yDirection = -1;
+        rotation = Quaternion.Euler(0, 0, 180);
+    }
+
+    private void GoForeward()
+    {
+        xDirection = 0;
+        yDirection = 1;
+        rotation = Quaternion.Euler(0, 0, 0);
     }
 
     IEnumerator FixedRefresh()
     {
         
-        float posX = transform.position.x - offsetX;
-        float posY = transform.position.y - offsetY;
+        int posX = (int)transform.position.x - offsetX;
+        int posY = (int)transform.position.y - offsetY;
 
         while (isSnakeAlive)
         {
             yield return new WaitForSeconds(snakeSpeed);
             
-            if(isSnakeAlive )
+            if(isSnakeAlive && !isMatchOver)
             {
                 ClearSnakeHead();
                 Instantiate(snakeParts[0], new Vector2(posX += xDirection, posY += yDirection), rotation);
@@ -120,5 +141,15 @@ public class SnakeMovement : MonoBehaviour
     public void FruitEaten()
     {
         snakeLength++;
+    }
+
+    public void SetMatchStatus(bool status)
+    {
+        isMatchOver = status;
+    }
+
+    public bool GetMatchStatus()
+    {
+        return isMatchOver;
     }
 }

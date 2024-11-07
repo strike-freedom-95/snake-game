@@ -5,30 +5,69 @@ using UnityEngine;
 public class SegmentScript : MonoBehaviour
 {
     [SerializeField] Sprite tailEnd;
+    [SerializeField] bool isAI = false;
 
     public void SetDuration(float time, float snakeSpeed)
     {
-        StartCoroutine(ChangeToTail(time - snakeSpeed));
+       
         // Destroy(gameObject, time);
-        StartCoroutine(DelayedDestruction(time));
+       
+        if(isAI)
+        {
+            if (!FindObjectOfType<AISnakeMovement>().GetMatchStatus())
+            {
+                StartCoroutine(ChangeToTail(time - snakeSpeed));
+                StartCoroutine(DelayedDestruction(time));
+            }
+        }
+        else
+        {
+            if (!FindObjectOfType<SnakeMovement>().GetMatchStatus())
+            {
+                StartCoroutine(ChangeToTail(time - snakeSpeed));
+                StartCoroutine(DelayedDestruction(time));
+            }
+        }
     }
 
     IEnumerator ChangeToTail(float interval)
     {
-        yield return new WaitForSeconds(interval);        
-        if (FindObjectOfType<SnakeMovement>().GetSnakeStatus())
+        yield return new WaitForSeconds(interval); 
+        if (!isAI)
         {
-            GetComponent<SpriteRenderer>().sprite = tailEnd;
+            if (FindObjectOfType<SnakeMovement>().GetSnakeStatus())
+            {
+                GetComponent<SpriteRenderer>().sprite = tailEnd;
+            }
         }
+        else
+        {
+            if (FindObjectOfType<AISnakeMovement>().GetSnakeStatus())
+            {
+                GetComponent<SpriteRenderer>().sprite = tailEnd;
+            }
+        }
+        
     }
 
     IEnumerator DelayedDestruction(float interval)
     {
         yield return new WaitForSeconds (interval);
-        if (FindObjectOfType<SnakeMovement>().GetSnakeStatus())
+        if (!isAI)
         {
-            Destroy(gameObject);
+            if (FindObjectOfType<SnakeMovement>().GetSnakeStatus())
+            {
+                Destroy(gameObject);
+            }
         }
+        else
+        {
+            if (FindObjectOfType<AISnakeMovement>().GetSnakeStatus())
+            {
+                Destroy(gameObject);
+            }
+        }
+        
         
     }
 }
